@@ -2,6 +2,7 @@ html(lang="en")
     head
         title Mapa AED - defibrylatory automatyczne w twoim smartfonie
         meta(charset="utf-8")
+        meta(property="og:image", content="https://raw.githubusercontent.com/matisiekpl/aed_map_landing/master/src/assets/images/poster.png")
         meta(name="apple-itunes-app", content="app-id=1638495701")
         meta(property="og:description", content="Przeglądaj dostępne w pobliżu defibrylatory AED, aby w razie potrzeby móc szybko udzielić pierwszej pomocy.")
         meta(property="og:locale", content="pl_PL")
@@ -17,7 +18,7 @@ html(lang="en")
         style.
                     .footer {zoom: 0.8;}
                 
-        script(src="https://analytics.chatspell.co/js/script.js", defer="defer")
+        script(src="https://analytics.chatspell.co/js/script.js")
         script(type="text/javascript").
                     // Burger menusdocument.addEventListener('DOMContentLoaded', function() {    // open    const burger = document.querySelectorAll('.navbar-burger');    const menu = document.querySelectorAll('.navbar-menu');    if (burger.length && menu.length) {        for (var i = 0; i < burger.length; i++) {            burger[i].addEventListener('click', function() {                for (var j = 0; j < menu.length; j++) {                    menu[j].classList.toggle('hidden');                }            });        }    }    // close    const close = document.querySelectorAll('.navbar-close');    const backdrop = document.querySelectorAll('.navbar-backdrop');    if (close.length) {        for (var i = 0; i < close.length; i++) {            close[i].addEventListener('click', function() {                for (var j = 0; j < menu.length; j++) {                    menu[j].classList.toggle('hidden');                }            });        }    }    if (backdrop.length) {        for (var i = 0; i < backdrop.length; i++) {            backdrop[i].addEventListener('click', function() {                for (var j = 0; j < menu.length; j++) {                    menu[j].classList.toggle('hidden');                }            });        }    }});
                 
