@@ -8,6 +8,10 @@ const formatter = new intl.DateTimeFormat('pl', {
     year: 'numeric'
 });
 
+if (!fs.existsSync('public/js')) {
+    fs.mkdirSync('public/js');
+    fs.writeFileSync('public/js/main.js', '');
+}
 async function main() {
     let wp = await axios.get('https://wp.aedmapa.pl/wp-json/wp/v2/posts?_embed');
     wp = wp.data;
@@ -41,6 +45,14 @@ async function main() {
     blog = blog.replace('{{posts}}', items);
     fs.writeFileSync('public/blog.html', blog);
 
+    fs.readdirSync('public').forEach(file => {
+        if (file.endsWith('.html')) {
+            let content = fs.readFileSync('public/' + file, 'utf8');
+            content = '<!DOCTYPE html>\n' + content;
+            content = content.replace(new RegExp('<a', 'g'), '<a aria-label="Czytaj więcej o AED"');
+            fs.writeFileSync('public/' + file, content);
+        }
+    });
 }
 
 main();
