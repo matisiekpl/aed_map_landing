@@ -50,6 +50,8 @@ async function main() {
             let content = fs.readFileSync('public/' + file, 'utf8');
             content = '<!DOCTYPE html>\n' + content;
             content = content.replace(new RegExp('<a', 'g'), '<a aria-label="Czytaj więcej o AED"');
+            content = content.replace(new RegExp('<img', 'g'), '<img alt="AED"');
+            content = content.replace(new RegExp('.png', 'g'), '.webp');
             fs.writeFileSync('public/' + file, content);
         }
     });
