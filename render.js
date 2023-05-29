@@ -2,16 +2,25 @@ const fs = require('fs');
 const axios = require('axios');
 const pug = require('pug');
 const intl = require('intl');
+const path = require('path');
 const formatter = new intl.DateTimeFormat('pl', {
     day: 'numeric',
     month: 'long',
     year: 'numeric'
 });
 
+fs.readdirSync('.').forEach(file => {
+    if (file.startsWith('turek')) {
+        fs.copyFileSync(path.resolve(__dirname, file), path.resolve(__dirname, 'public', file));
+        console.log('Copied ' + file);
+    }
+});
+
 if (!fs.existsSync('public/js')) {
     fs.mkdirSync('public/js');
     fs.writeFileSync('public/js/main.js', '');
 }
+
 async function main() {
     let wp = await axios.get('https://wp.aedmapa.pl/wp-json/wp/v2/posts?_embed');
     wp = wp.data;
