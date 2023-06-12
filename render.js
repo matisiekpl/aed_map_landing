@@ -10,7 +10,7 @@ const formatter = new intl.DateTimeFormat('pl', {
 });
 
 fs.readdirSync('.').forEach(file => {
-    if (file.startsWith('turek')) {
+    if (file.startsWith('turek') || file.endsWith('epub')) {
         fs.copyFileSync(path.resolve(__dirname, file), path.resolve(__dirname, 'public', file));
         console.log('Copied ' + file);
     }
