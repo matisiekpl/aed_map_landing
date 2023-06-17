@@ -9,6 +9,8 @@ const formatter = new intl.DateTimeFormat('pl', {
     year: 'numeric'
 });
 
+const include = fs.readFileSync('include.html', 'utf8');
+
 fs.readdirSync('.').forEach(file => {
     if (file.startsWith('turek') || file.endsWith('epub') || file.endsWith('pdf')) {
         fs.copyFileSync(path.resolve(__dirname, file), path.resolve(__dirname, 'public', file));
@@ -58,6 +60,7 @@ async function main() {
         if (file.endsWith('.html')) {
             let content = fs.readFileSync('public/' + file, 'utf8');
             content = '<!DOCTYPE html>\n' + content;
+            content = content.replace('<head>', '<head>' + include);
             content = content.replace(new RegExp('<a', 'g'), '<a aria-label="Czytaj więcej o AED"');
             content = content.replace(new RegExp('<img', 'g'), '<img alt="AED"');
             content = content.replace(new RegExp('.png', 'g'), '.webp');

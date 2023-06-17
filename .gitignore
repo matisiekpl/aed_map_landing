@@ -130,3 +130,5 @@ dist
 .pnp.*
 
 public/
+# Local Netlify folder
+.netlify
